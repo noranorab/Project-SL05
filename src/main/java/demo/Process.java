@@ -58,11 +58,8 @@ public class Process extends AbstractActor {
                 if (msg.equals("CRASH")) {
                     log.info("Process {} is crashing.", id);
                     isCrashed = true;
-                } else {
-                    for (int i = 0; i < 5; i++) {
-                        read();
-                    }
-                }
+                } 
+                
             })
             .match(List.class, msg ->{
                 allProcesses = msg;
@@ -70,10 +67,7 @@ public class Process extends AbstractActor {
             .match(Launch.class, msg -> {
                 if (!isCrashed) {
                     log.info("Process {} launched with {} operations.", id, msg.getM());
-                   /* for (int i = 0; i < msg.getM(); i++) {
-                        int valueToWrite = 1 + i * allProcesses.size() + id;
-                        write(valueToWrite);
-                    }*/
+                   
                     nbOfOperations=msg.getM()*2;
                     int valueToWrite = 1 + counter * allProcesses.size() + id;
                     counter++;

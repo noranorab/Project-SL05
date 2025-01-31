@@ -61,12 +61,7 @@ public class Main {
 
 
         TimeUnit.SECONDS.sleep(30);
-        
-     /*   for (ActorRef process : allProcesses) {
-            if (!processesToCrash.contains(process)) {
-                process.tell("read", ActorRef.noSender());
-            }
-        }*/
+      
         // Shutdown the Actor System
         system.terminate();
     }
